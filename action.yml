@@ -1,0 +1,30 @@
+# This workflow will build functions of Aliyun Function Compute locally.
+#
+# This workflow assumes you have already created the project using fc-alibaba-component of Serverless-Devs.
+
+name: 'Build Aliyun FC Function Locally Using Serverless-Devs'
+description: 'Build Aliyun FC Function'
+
+inputs:
+  working_directory:
+    description: 'Directory containing template.yml'
+    required: false
+    default: './'
+  projects:
+    description: 'Target projects which are delimited by space. The default * represents all projects'
+    required: false
+    default: '*'
+
+runs:
+  using: "composite"
+  steps:
+    - name: chmod +x
+      run: sudo chmod +x ${{ github.action_path }}/dev/build.sh
+      shell: bash
+
+    - name: build/install
+      run: ${{ github.action_path }}/dev/build.sh
+      shell: bash
+      env:
+        INPUT_WORKING_DIRECTORY: ${{ inputs.working_directory }}
+        INPUT_PROJECTS: ${{ inputs.projects }}
