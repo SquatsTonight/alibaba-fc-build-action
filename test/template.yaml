@@ -1,0 +1,35 @@
+ServerlessDevsNode10:
+  Component: fc
+  Provider: alibaba
+  Properties:
+    Region: cn-hongkong
+    Service:
+      Name: serverless-devs-fc-action-demo-service
+    Function:
+      Name: fc-nodejs10-demo
+      Description: This is a http trigger function of nodejs10
+      CodeUri: ./fc-nodejs10
+      Handler: index.handler
+      Runtime: nodejs10
+      MemorySize: 128
+      Timeout: 60
+      Triggers:
+        - Name: TriggerNameHttp
+          Type: HTTP
+          Parameters:
+            AuthType: ANONYMOUS
+            Methods:
+              - GET
+ServerlessDevsJava8:
+  Component: fc
+  Provider: alibaba
+  Properties:
+    Region: cn-hongkong
+    Service:
+      Name: serverless-devs-fc-action-demo-service
+    Function:
+      Name: fc-java8-demo
+      Description: This is a event-java8 function
+      CodeUri: ./fc-java8
+      Handler: example.App::handleRequest
+      Runtime: java8
