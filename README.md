@@ -1,5 +1,5 @@
-![GitHub Actions status](https://github.com/git-qfzhang/Serverless-Devs-Initialization-Actinos/workflows/Check/badge.svg)
-[![License](https://img.shields.io/github/license/git-qfzhang/Serverless-Devs-Initialization-Actinos.svg)](https://github.com/git-qfzhang/Serverless-Devs-Initialization-Actinos/blob/master/LICENSE)
+![GitHub Actions status](https://github.com/git-qfzhang/git-qfzhang/alibaba-fc-build-action/workflows/Check/badge.svg)
+[![License](https://img.shields.io/github/license/git-qfzhang/git-qfzhang/alibaba-fc-build-action.svg)](https://github.com/git-qfzhang/git-qfzhang/alibaba-fc-build-action/blob/master/LICENSE)
 
 # Alibaba Function Computer Build Action For Github Actions
 
@@ -7,11 +7,19 @@ Github action for building artifacts for compiled language runtime or installing
 
 <!-- toc -->
 
+- [Prerequisites](#prerequisites)
 - [Usage](#usage)
-- [Input variables](#credentials)
+- [Input variables](#input-variables)
 - [License Summary](#license-summary)
 
 <!-- tocstop -->
+
+## Prerequisites
+
+You should be familiar with Alibaba FC and Serverless-Devs FC Component. For more information, see:
+
+* "[Alibaba FC](https://help.aliyun.com/document_detail/52895.html?spm=a2c4g.11186623.6.541.7678c030BEWawt)"
+* "[Serverless-Devs FC Component](https://github.com/Serverless-Devs-Awesome/fc-alibaba-component/)"
 
 ## Usage
 
@@ -48,9 +56,9 @@ If you want to build the target [projects]((https://github.com/Serverless-Devs/d
           uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
           with:
             provider: alibaba
-            access_key_id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-            access_key_secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-            account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+            AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+            AccessKeySecret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+            AccountID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
 
         - name: Building
           uses: git-qfzhang/alibaba-fc-build-action@main
@@ -62,7 +70,7 @@ If you want to build the target [projects]((https://github.com/Serverless-Devs/d
 You should ignore `projects` variable or input `*` to `projects` varibale when building all projects:
 
 ```yaml
-    name: Check
+    name: build fc function
 
     on:
       push:
@@ -82,15 +90,17 @@ You should ignore `projects` variable or input `*` to `projects` varibale when b
           uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
           with:
             provider: alibaba
-            access_key_id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-            access_key_secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-            account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+            AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+            AccessKeySecret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+            AccountID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
 
         - name: Building
           uses: git-qfzhang/alibaba-fc-build-action@main
           with: 
             working_directory: ./test
 ```
+
+The application of alibaba-fc-build-action can refer to [Serverless CI/CD](https://github.com/git-qfzhang/Serverless-CI-CD/tree/dev/src).
 
 `git-qfzhang/Serverless-Devs-Initialization-Action` is the precondition of the building action, more information can refer to [here](https://github.com/git-qfzhang/Serverless-Devs-Initialization-Action/blob/main/README.md).
 

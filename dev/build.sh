@@ -52,10 +52,16 @@ do
 
   if [[ $COMPILED_LANGUAGE_LIST =~ (^|[[:space:]])$runtime_prefix($|[[:space:]]) ]]; then
     echo "Building artifacts for project $project with compiled runtime: $runtime..."
-    ( cd "$INPUT_WORKING_DIRECTORY" && sudo s "$project" build docker )
+    (
+      cd "$INPUT_WORKING_DIRECTORY"
+      sudo --preserve-env s "$project" build docker || { echo "build failed"; exit 1; }
+    )
   elif [[ $INTERPRETED_LANGUAGE_LIST =~ (^|[[:space:]])$runtime_prefix($|[[:space:]]) ]]; then
     echo "Installing dependencies for project $project with interpreted runtime: $runtime..."
-    ( cd "$INPUT_WORKING_DIRECTORY" && sudo s "$project" install docker )
+    ( 
+      cd "$INPUT_WORKING_DIRECTORY"
+      sudo --preserve-env s "$project" install docker || { echo "build failed"; exit 1; }
+    )
   else
     echo "Unsupported runtime: $runtime"
     exit 1

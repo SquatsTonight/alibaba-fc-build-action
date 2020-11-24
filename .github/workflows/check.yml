@@ -8,7 +8,7 @@ on:
 
 jobs:
   check-node:
-    name: Build nodejs demo function
+    name: Build nodejs project
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -18,9 +18,9 @@ jobs:
       uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
       with:
         provider: alibaba
-        access_key_id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-        access_key_secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-        account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+        AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+        AccessKeySecret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        AccountID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
 
     - name: Building
       uses: ./
@@ -33,8 +33,8 @@ jobs:
         sudo apt-get install tree
         sudo tree ./test/fc-nodejs10/node_modules -L 1
 
-  check-all:
-    name: Build nodejs and java demo function
+  check-node-and-java:
+    name: Build nodejs and java projects
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -44,15 +44,41 @@ jobs:
       uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
       with:
         provider: alibaba
-        access_key_id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-        access_key_secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-        account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+        AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+        AccessKeySecret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        AccountID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
 
     - name: Building
       uses: ./
       with: 
         working_directory: ./test
         projects: 'ServerlessDevsNode10 ServerlessDevsJava8'
+
+    - name: Checking
+      run: |
+        sudo apt-get install tree
+        sudo tree ./test/fc-nodejs10/node_modules -L 1
+        sudo tree ./test/.fc/build -L 1
+
+  check-all:
+    name: Build all projects
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Initializing Serverless-Devs
+      uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
+      with:
+        provider: alibaba
+        AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+        AccessKeySecret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        AccountID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+
+    - name: Building
+      uses: ./
+      with: 
+        working_directory: ./test
 
     - name: Checking
       run: |
