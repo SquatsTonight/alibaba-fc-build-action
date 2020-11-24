@@ -62,7 +62,7 @@ If you want to build the target [projects]((https://github.com/Serverless-Devs/d
 You should ignore `projects` variable or input `*` to `projects` varibale when building all projects:
 
 ```yaml
-    name: Check
+    name: build fc function
 
     on:
       push:
