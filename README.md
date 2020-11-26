@@ -1,5 +1,5 @@
-![GitHub Actions status](https://github.com/git-qfzhang/git-qfzhang/alibaba-fc-build-action/workflows/Check/badge.svg)
-[![License](https://img.shields.io/github/license/git-qfzhang/git-qfzhang/alibaba-fc-build-action.svg)](https://github.com/git-qfzhang/git-qfzhang/alibaba-fc-build-action/blob/master/LICENSE)
+![GitHub Actions status](https://github.com/git-qfzhang/alibaba-fc-build-action/workflows/Check/badge.svg)
+[![License](https://img.shields.io/github/license/git-qfzhang/alibaba-fc-build-action.svg)](https://github.com/git-qfzhang/alibaba-fc-build-action/blob/master/LICENSE)
 
 # Alibaba Function Computer Build Action For Github Actions
 
