@@ -53,7 +53,7 @@ If you want to build the target [projects]((https://github.com/Serverless-Devs/d
           uses: actions/checkout@v2
 
         - name: Initializing Serverless-Devs
-          uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
+          uses: Serverless-Devs/serverless-devs-initialization-action@main
           with:
             provider: alibaba
             AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
@@ -87,7 +87,7 @@ You should ignore `projects` variable or input `*` to `projects` varibale when b
           uses: actions/checkout@v2
 
         - name: Initializing Serverless-Devs
-          uses: git-qfzhang/Serverless-Devs-Initialization-Action@main
+          uses: Serverless-Devs/serverless-devs-initialization-action@main
           with:
             provider: alibaba
             AccessKeyID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
@@ -100,9 +100,9 @@ You should ignore `projects` variable or input `*` to `projects` varibale when b
             working_directory: ./test
 ```
 
-The application of alibaba-fc-build-action can refer to [Serverless CI/CD](https://github.com/git-qfzhang/Serverless-CI-CD/tree/dev/src).
+The application of alibaba-fc-build-action can refer to [Serverless CI/CD](https://github.com/git-qfzhang/serverless-cicd).
 
-`git-qfzhang/Serverless-Devs-Initialization-Action` is the precondition of the building action, more information can refer to [here](https://github.com/git-qfzhang/Serverless-Devs-Initialization-Action/blob/main/README.md).
+`Serverless-Devs/serverless-devs-initialization-action` is the precondition of the building action, more information can refer to [here](https://github.com/Serverless-Devs/serverless-devs-initialization-action/blob/main/README.md).
 
 ## Input variables
 
